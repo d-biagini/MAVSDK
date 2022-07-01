@@ -18,7 +18,7 @@ OffboardServerImpl::~OffboardServerImpl()
 
 void OffboardServerImpl::init() {
     _server_component_impl->register_mavlink_message_handler(
-        MAVLINK_MSG_ID_POSITION_TARGET_GLOBAL_INT,
+        MAVLINK_MSG_ID_SET_POSITION_TARGET_GLOBAL_INT,
         [this](const mavlink_message_t& message) { process_position_target_global_int(message); },
         this
     );
