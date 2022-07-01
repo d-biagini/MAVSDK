@@ -1,7 +1,7 @@
 target_sources(mavsdk
     PRIVATE
-    offboard_server.cpp
-    offboard_server_impl.cpp
+    swarm_server.cpp
+    swarm_server_impl.cpp
 )
 
 target_include_directories(mavsdk PUBLIC
@@ -10,6 +10,6 @@ target_include_directories(mavsdk PUBLIC
     )
 
 install(FILES
-    include/plugins/offboard_server/offboard_server.h
-    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/mavsdk/plugins/offboard_server
+    include/plugins/swarm_server/swarm_server.h
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/mavsdk/plugins/swarm_server
 )

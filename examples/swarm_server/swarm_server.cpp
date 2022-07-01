@@ -5,7 +5,7 @@
 #include <chrono>
 #include <cstdint>
 #include <mavsdk/mavsdk.h>
-#include<mavsdk/plugins/offboard_server/offboard_server.h>
+#include <mavsdk/plugins/swarm_server/swarm_server.h>
 #include <iostream>
 #include <future>
 #include <memory>
@@ -69,16 +69,17 @@ int main(int argc, char** argv)
     }
 
     auto server_component = mavsdk.server_component_by_id(190);
-    auto offboard_server = OffboardServer{server_component};
+    auto swarm_server = SwarmServer{server_component};
 
-    offboard_server.subscribe_position_target_global_setpoint([](OffboardServer::PositionGlobalYaw position) {
-        std::cout   << "lon: " << position.lon_deg << "\n"
-                    << "lat: " << position.lat_deg << "\n"
-                    << "alt: " << position.alt_m << "\n"
-                    << "yaw: " << position.yaw_deg << "\n";
-    });
+    swarm_server.subscribe_position_target_global_setpoint(
+        [](SwarmServer::PositionGlobalYaw position) {
+            std::cout << "lon: " << position.lon_deg << "\n"
+                      << "lat: " << position.lat_deg << "\n"
+                      << "alt: " << position.alt_m << "\n"
+                      << "yaw: " << position.yaw_deg << "\n";
+        });
 
-    while(true) {
+    while (true) {
         sleep_for(std::chrono::milliseconds(100));
     }
 
