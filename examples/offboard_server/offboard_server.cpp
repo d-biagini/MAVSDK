@@ -59,7 +59,7 @@ int main(int argc, char** argv)
     }
 
     Mavsdk mavsdk;
-    mavsdk.set_configuration(Mavsdk::Configuration(10, 2, true));
+    mavsdk.set_configuration(Mavsdk::Configuration(10, 190, true));
 
     ConnectionResult connection_result = mavsdk.add_any_connection(argv[1]);
 
