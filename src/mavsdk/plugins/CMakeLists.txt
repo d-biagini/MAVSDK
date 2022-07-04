@@ -29,6 +29,7 @@ add_subdirectory(transponder)
 add_subdirectory(rtk)
 add_subdirectory(telemetry_server)
 add_subdirectory(swarm_server)
+add_subdirectory(swarm_controller)
 add_subdirectory(tune)
 
 set(UNIT_TEST_SOURCES ${UNIT_TEST_SOURCES} PARENT_SCOPE)

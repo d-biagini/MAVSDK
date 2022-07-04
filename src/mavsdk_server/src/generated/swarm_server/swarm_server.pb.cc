@@ -46,28 +46,11 @@ struct SubscribePositionTargetGlobalResponseDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SubscribePositionTargetGlobalResponseDefaultTypeInternal _SubscribePositionTargetGlobalResponse_default_instance_;
-PROTOBUF_CONSTEXPR PositionGlobalYaw::PositionGlobalYaw(
-    ::_pbi::ConstantInitialized)
-  : lat_deg_(0)
-  , lon_deg_(0)
-  , alt_m_(0)
-  , yaw_deg_(0)
-  , altitude_type_(0)
-{}
-struct PositionGlobalYawDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR PositionGlobalYawDefaultTypeInternal()
-      : _instance(::_pbi::ConstantInitialized{}) {}
-  ~PositionGlobalYawDefaultTypeInternal() {}
-  union {
-    PositionGlobalYaw _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 PositionGlobalYawDefaultTypeInternal _PositionGlobalYaw_default_instance_;
 }  // namespace swarm_server
 }  // namespace rpc
 }  // namespace mavsdk
-static ::_pb::Metadata file_level_metadata_swarm_5fserver_2fswarm_5fserver_2eproto[3];
-static const ::_pb::EnumDescriptor* file_level_enum_descriptors_swarm_5fserver_2fswarm_5fserver_2eproto[1];
+static ::_pb::Metadata file_level_metadata_swarm_5fserver_2fswarm_5fserver_2eproto[2];
+static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_swarm_5fserver_2fswarm_5fserver_2eproto = nullptr;
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_swarm_5fserver_2fswarm_5fserver_2eproto = nullptr;
 
 const uint32_t TableStruct_swarm_5fserver_2fswarm_5fserver_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
@@ -84,58 +67,40 @@ const uint32_t TableStruct_swarm_5fserver_2fswarm_5fserver_2eproto::offsets[] PR
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::swarm_server::SubscribePositionTargetGlobalResponse, position_global_yaw_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::swarm_server::PositionGlobalYaw, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::swarm_server::PositionGlobalYaw, lat_deg_),
-  PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::swarm_server::PositionGlobalYaw, lon_deg_),
-  PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::swarm_server::PositionGlobalYaw, alt_m_),
-  PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::swarm_server::PositionGlobalYaw, yaw_deg_),
-  PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::swarm_server::PositionGlobalYaw, altitude_type_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::mavsdk::rpc::swarm_server::SubscribePositionTargetGlobalRequest)},
   { 6, -1, -1, sizeof(::mavsdk::rpc::swarm_server::SubscribePositionTargetGlobalResponse)},
-  { 13, -1, -1, sizeof(::mavsdk::rpc::swarm_server::PositionGlobalYaw)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
   &::mavsdk::rpc::swarm_server::_SubscribePositionTargetGlobalRequest_default_instance_._instance,
   &::mavsdk::rpc::swarm_server::_SubscribePositionTargetGlobalResponse_default_instance_._instance,
-  &::mavsdk::rpc::swarm_server::_PositionGlobalYaw_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_swarm_5fserver_2fswarm_5fserver_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\037swarm_server/swarm_server.proto\022\027mavsd"
   "k.rpc.swarm_server\032\024mavsdk_options.proto"
-  "\"&\n$SubscribePositionTargetGlobalRequest"
-  "\"p\n%SubscribePositionTargetGlobalRespons"
-  "e\022G\n\023position_global_yaw\030\001 \001(\0132*.mavsdk."
-  "rpc.swarm_server.PositionGlobalYaw\"\200\002\n\021P"
-  "ositionGlobalYaw\022\017\n\007lat_deg\030\001 \001(\001\022\017\n\007lon"
-  "_deg\030\002 \001(\001\022\r\n\005alt_m\030\003 \001(\002\022\017\n\007yaw_deg\030\004 \001"
-  "(\002\022N\n\raltitude_type\030\005 \001(\01627.mavsdk.rpc.s"
-  "warm_server.PositionGlobalYaw.AltitudeTy"
-  "pe\"Y\n\014AltitudeType\022\032\n\026ALTITUDE_TYPE_REL_"
-  "HOME\020\000\022\026\n\022ALTITUDE_TYPE_AMSL\020\001\022\025\n\021ALTITU"
-  "DE_TYPE_AGL\020\0022\305\001\n\022SwarmServerService\022\256\001\n"
-  "%SubscribePositionTargetGlobalSetpoint\022="
-  ".mavsdk.rpc.swarm_server.SubscribePositi"
-  "onTargetGlobalRequest\032>.mavsdk.rpc.swarm"
-  "_server.SubscribePositionTargetGlobalRes"
-  "ponse\"\004\200\265\030\0000\001b\006proto3"
+  "\032\023mavsdk_common.proto\"&\n$SubscribePositi"
+  "onTargetGlobalRequest\"f\n%SubscribePositi"
+  "onTargetGlobalResponse\022=\n\023position_globa"
+  "l_yaw\030\001 \001(\0132 .mavsdk.common.PositionGlob"
+  "alYaw2\305\001\n\022SwarmServerService\022\256\001\n%Subscri"
+  "bePositionTargetGlobalSetpoint\022=.mavsdk."
+  "rpc.swarm_server.SubscribePositionTarget"
+  "GlobalRequest\032>.mavsdk.rpc.swarm_server."
+  "SubscribePositionTargetGlobalResponse\"\004\200"
+  "\265\030\0000\001b\006proto3"
   ;
-static const ::_pbi::DescriptorTable* const descriptor_table_swarm_5fserver_2fswarm_5fserver_2eproto_deps[1] = {
+static const ::_pbi::DescriptorTable* const descriptor_table_swarm_5fserver_2fswarm_5fserver_2eproto_deps[2] = {
+  &::descriptor_table_mavsdk_5fcommon_2eproto,
   &::descriptor_table_mavsdk_5foptions_2eproto,
 };
 static ::_pbi::once_flag descriptor_table_swarm_5fserver_2fswarm_5fserver_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_swarm_5fserver_2fswarm_5fserver_2eproto = {
-    false, false, 701, descriptor_table_protodef_swarm_5fserver_2fswarm_5fserver_2eproto,
+    false, false, 453, descriptor_table_protodef_swarm_5fserver_2fswarm_5fserver_2eproto,
     "swarm_server/swarm_server.proto",
-    &descriptor_table_swarm_5fserver_2fswarm_5fserver_2eproto_once, descriptor_table_swarm_5fserver_2fswarm_5fserver_2eproto_deps, 1, 3,
+    &descriptor_table_swarm_5fserver_2fswarm_5fserver_2eproto_once, descriptor_table_swarm_5fserver_2fswarm_5fserver_2eproto_deps, 2, 2,
     schemas, file_default_instances, TableStruct_swarm_5fserver_2fswarm_5fserver_2eproto::offsets,
     file_level_metadata_swarm_5fserver_2fswarm_5fserver_2eproto, file_level_enum_descriptors_swarm_5fserver_2fswarm_5fserver_2eproto,
     file_level_service_descriptors_swarm_5fserver_2fswarm_5fserver_2eproto,
@@ -149,29 +114,6 @@ PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_in
 namespace mavsdk {
 namespace rpc {
 namespace swarm_server {
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* PositionGlobalYaw_AltitudeType_descriptor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_swarm_5fserver_2fswarm_5fserver_2eproto);
-  return file_level_enum_descriptors_swarm_5fserver_2fswarm_5fserver_2eproto[0];
-}
-bool PositionGlobalYaw_AltitudeType_IsValid(int value) {
-  switch (value) {
-    case 0:
-    case 1:
-    case 2:
-      return true;
-    default:
-      return false;
-  }
-}
-
-#if (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
-constexpr PositionGlobalYaw_AltitudeType PositionGlobalYaw::ALTITUDE_TYPE_REL_HOME;
-constexpr PositionGlobalYaw_AltitudeType PositionGlobalYaw::ALTITUDE_TYPE_AMSL;
-constexpr PositionGlobalYaw_AltitudeType PositionGlobalYaw::ALTITUDE_TYPE_AGL;
-constexpr PositionGlobalYaw_AltitudeType PositionGlobalYaw::AltitudeType_MIN;
-constexpr PositionGlobalYaw_AltitudeType PositionGlobalYaw::AltitudeType_MAX;
-constexpr int PositionGlobalYaw::AltitudeType_ARRAYSIZE;
-#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
 
 // ===================================================================
 
@@ -216,12 +158,18 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SubscribePositionTargetGlobalR
 
 class SubscribePositionTargetGlobalResponse::_Internal {
  public:
-  static const ::mavsdk::rpc::swarm_server::PositionGlobalYaw& position_global_yaw(const SubscribePositionTargetGlobalResponse* msg);
+  static const ::mavsdk::common::PositionGlobalYaw& position_global_yaw(const SubscribePositionTargetGlobalResponse* msg);
 };
 
-const ::mavsdk::rpc::swarm_server::PositionGlobalYaw&
+const ::mavsdk::common::PositionGlobalYaw&
 SubscribePositionTargetGlobalResponse::_Internal::position_global_yaw(const SubscribePositionTargetGlobalResponse* msg) {
   return *msg->position_global_yaw_;
+}
+void SubscribePositionTargetGlobalResponse::clear_position_global_yaw() {
+  if (GetArenaForAllocation() == nullptr && position_global_yaw_ != nullptr) {
+    delete position_global_yaw_;
+  }
+  position_global_yaw_ = nullptr;
 }
 SubscribePositionTargetGlobalResponse::SubscribePositionTargetGlobalResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
@@ -233,7 +181,7 @@ SubscribePositionTargetGlobalResponse::SubscribePositionTargetGlobalResponse(con
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   if (from._internal_has_position_global_yaw()) {
-    position_global_yaw_ = new ::mavsdk::rpc::swarm_server::PositionGlobalYaw(*from.position_global_yaw_);
+    position_global_yaw_ = new ::mavsdk::common::PositionGlobalYaw(*from.position_global_yaw_);
   } else {
     position_global_yaw_ = nullptr;
   }
@@ -281,7 +229,7 @@ const char* SubscribePositionTargetGlobalResponse::_InternalParse(const char* pt
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // .mavsdk.rpc.swarm_server.PositionGlobalYaw position_global_yaw = 1;
+      // .mavsdk.common.PositionGlobalYaw position_global_yaw = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_position_global_yaw(), ptr);
@@ -318,7 +266,7 @@ uint8_t* SubscribePositionTargetGlobalResponse::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .mavsdk.rpc.swarm_server.PositionGlobalYaw position_global_yaw = 1;
+  // .mavsdk.common.PositionGlobalYaw position_global_yaw = 1;
   if (this->_internal_has_position_global_yaw()) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(1, _Internal::position_global_yaw(this),
@@ -341,7 +289,7 @@ size_t SubscribePositionTargetGlobalResponse::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // .mavsdk.rpc.swarm_server.PositionGlobalYaw position_global_yaw = 1;
+  // .mavsdk.common.PositionGlobalYaw position_global_yaw = 1;
   if (this->_internal_has_position_global_yaw()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
@@ -371,7 +319,7 @@ void SubscribePositionTargetGlobalResponse::MergeFrom(const SubscribePositionTar
   (void) cached_has_bits;
 
   if (from._internal_has_position_global_yaw()) {
-    _internal_mutable_position_global_yaw()->::mavsdk::rpc::swarm_server::PositionGlobalYaw::MergeFrom(from._internal_position_global_yaw());
+    _internal_mutable_position_global_yaw()->::mavsdk::common::PositionGlobalYaw::MergeFrom(from._internal_position_global_yaw());
   }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -399,328 +347,6 @@ void SubscribePositionTargetGlobalResponse::InternalSwap(SubscribePositionTarget
       file_level_metadata_swarm_5fserver_2fswarm_5fserver_2eproto[1]);
 }
 
-// ===================================================================
-
-class PositionGlobalYaw::_Internal {
- public:
-};
-
-PositionGlobalYaw::PositionGlobalYaw(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.swarm_server.PositionGlobalYaw)
-}
-PositionGlobalYaw::PositionGlobalYaw(const PositionGlobalYaw& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::memcpy(&lat_deg_, &from.lat_deg_,
-    static_cast<size_t>(reinterpret_cast<char*>(&altitude_type_) -
-    reinterpret_cast<char*>(&lat_deg_)) + sizeof(altitude_type_));
-  // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.swarm_server.PositionGlobalYaw)
-}
-
-inline void PositionGlobalYaw::SharedCtor() {
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&lat_deg_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&altitude_type_) -
-    reinterpret_cast<char*>(&lat_deg_)) + sizeof(altitude_type_));
-}
-
-PositionGlobalYaw::~PositionGlobalYaw() {
-  // @@protoc_insertion_point(destructor:mavsdk.rpc.swarm_server.PositionGlobalYaw)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
-  SharedDtor();
-}
-
-inline void PositionGlobalYaw::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-}
-
-void PositionGlobalYaw::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-
-void PositionGlobalYaw::Clear() {
-// @@protoc_insertion_point(message_clear_start:mavsdk.rpc.swarm_server.PositionGlobalYaw)
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  ::memset(&lat_deg_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&altitude_type_) -
-      reinterpret_cast<char*>(&lat_deg_)) + sizeof(altitude_type_));
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-const char* PositionGlobalYaw::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // double lat_deg = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 9)) {
-          lat_deg_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
-          ptr += sizeof(double);
-        } else
-          goto handle_unusual;
-        continue;
-      // double lon_deg = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 17)) {
-          lon_deg_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
-          ptr += sizeof(double);
-        } else
-          goto handle_unusual;
-        continue;
-      // float alt_m = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 29)) {
-          alt_m_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
-          ptr += sizeof(float);
-        } else
-          goto handle_unusual;
-        continue;
-      // float yaw_deg = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 37)) {
-          yaw_deg_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
-          ptr += sizeof(float);
-        } else
-          goto handle_unusual;
-        continue;
-      // .mavsdk.rpc.swarm_server.PositionGlobalYaw.AltitudeType altitude_type = 5;
-      case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
-          uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
-          CHK_(ptr);
-          _internal_set_altitude_type(static_cast<::mavsdk::rpc::swarm_server::PositionGlobalYaw_AltitudeType>(val));
-        } else
-          goto handle_unusual;
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
-}
-
-uint8_t* PositionGlobalYaw::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:mavsdk.rpc.swarm_server.PositionGlobalYaw)
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // double lat_deg = 1;
-  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
-  double tmp_lat_deg = this->_internal_lat_deg();
-  uint64_t raw_lat_deg;
-  memcpy(&raw_lat_deg, &tmp_lat_deg, sizeof(tmp_lat_deg));
-  if (raw_lat_deg != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteDoubleToArray(1, this->_internal_lat_deg(), target);
-  }
-
-  // double lon_deg = 2;
-  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
-  double tmp_lon_deg = this->_internal_lon_deg();
-  uint64_t raw_lon_deg;
-  memcpy(&raw_lon_deg, &tmp_lon_deg, sizeof(tmp_lon_deg));
-  if (raw_lon_deg != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteDoubleToArray(2, this->_internal_lon_deg(), target);
-  }
-
-  // float alt_m = 3;
-  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
-  float tmp_alt_m = this->_internal_alt_m();
-  uint32_t raw_alt_m;
-  memcpy(&raw_alt_m, &tmp_alt_m, sizeof(tmp_alt_m));
-  if (raw_alt_m != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteFloatToArray(3, this->_internal_alt_m(), target);
-  }
-
-  // float yaw_deg = 4;
-  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
-  float tmp_yaw_deg = this->_internal_yaw_deg();
-  uint32_t raw_yaw_deg;
-  memcpy(&raw_yaw_deg, &tmp_yaw_deg, sizeof(tmp_yaw_deg));
-  if (raw_yaw_deg != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteFloatToArray(4, this->_internal_yaw_deg(), target);
-  }
-
-  // .mavsdk.rpc.swarm_server.PositionGlobalYaw.AltitudeType altitude_type = 5;
-  if (this->_internal_altitude_type() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteEnumToArray(
-      5, this->_internal_altitude_type(), target);
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:mavsdk.rpc.swarm_server.PositionGlobalYaw)
-  return target;
-}
-
-size_t PositionGlobalYaw::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:mavsdk.rpc.swarm_server.PositionGlobalYaw)
-  size_t total_size = 0;
-
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  // double lat_deg = 1;
-  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
-  double tmp_lat_deg = this->_internal_lat_deg();
-  uint64_t raw_lat_deg;
-  memcpy(&raw_lat_deg, &tmp_lat_deg, sizeof(tmp_lat_deg));
-  if (raw_lat_deg != 0) {
-    total_size += 1 + 8;
-  }
-
-  // double lon_deg = 2;
-  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
-  double tmp_lon_deg = this->_internal_lon_deg();
-  uint64_t raw_lon_deg;
-  memcpy(&raw_lon_deg, &tmp_lon_deg, sizeof(tmp_lon_deg));
-  if (raw_lon_deg != 0) {
-    total_size += 1 + 8;
-  }
-
-  // float alt_m = 3;
-  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
-  float tmp_alt_m = this->_internal_alt_m();
-  uint32_t raw_alt_m;
-  memcpy(&raw_alt_m, &tmp_alt_m, sizeof(tmp_alt_m));
-  if (raw_alt_m != 0) {
-    total_size += 1 + 4;
-  }
-
-  // float yaw_deg = 4;
-  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
-  float tmp_yaw_deg = this->_internal_yaw_deg();
-  uint32_t raw_yaw_deg;
-  memcpy(&raw_yaw_deg, &tmp_yaw_deg, sizeof(tmp_yaw_deg));
-  if (raw_yaw_deg != 0) {
-    total_size += 1 + 4;
-  }
-
-  // .mavsdk.rpc.swarm_server.PositionGlobalYaw.AltitudeType altitude_type = 5;
-  if (this->_internal_altitude_type() != 0) {
-    total_size += 1 +
-      ::_pbi::WireFormatLite::EnumSize(this->_internal_altitude_type());
-  }
-
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
-}
-
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData PositionGlobalYaw::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    PositionGlobalYaw::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*PositionGlobalYaw::GetClassData() const { return &_class_data_; }
-
-void PositionGlobalYaw::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<PositionGlobalYaw *>(to)->MergeFrom(
-      static_cast<const PositionGlobalYaw &>(from));
-}
-
-
-void PositionGlobalYaw::MergeFrom(const PositionGlobalYaw& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.swarm_server.PositionGlobalYaw)
-  GOOGLE_DCHECK_NE(&from, this);
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
-  double tmp_lat_deg = from._internal_lat_deg();
-  uint64_t raw_lat_deg;
-  memcpy(&raw_lat_deg, &tmp_lat_deg, sizeof(tmp_lat_deg));
-  if (raw_lat_deg != 0) {
-    _internal_set_lat_deg(from._internal_lat_deg());
-  }
-  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
-  double tmp_lon_deg = from._internal_lon_deg();
-  uint64_t raw_lon_deg;
-  memcpy(&raw_lon_deg, &tmp_lon_deg, sizeof(tmp_lon_deg));
-  if (raw_lon_deg != 0) {
-    _internal_set_lon_deg(from._internal_lon_deg());
-  }
-  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
-  float tmp_alt_m = from._internal_alt_m();
-  uint32_t raw_alt_m;
-  memcpy(&raw_alt_m, &tmp_alt_m, sizeof(tmp_alt_m));
-  if (raw_alt_m != 0) {
-    _internal_set_alt_m(from._internal_alt_m());
-  }
-  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
-  float tmp_yaw_deg = from._internal_yaw_deg();
-  uint32_t raw_yaw_deg;
-  memcpy(&raw_yaw_deg, &tmp_yaw_deg, sizeof(tmp_yaw_deg));
-  if (raw_yaw_deg != 0) {
-    _internal_set_yaw_deg(from._internal_yaw_deg());
-  }
-  if (from._internal_altitude_type() != 0) {
-    _internal_set_altitude_type(from._internal_altitude_type());
-  }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void PositionGlobalYaw::CopyFrom(const PositionGlobalYaw& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:mavsdk.rpc.swarm_server.PositionGlobalYaw)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool PositionGlobalYaw::IsInitialized() const {
-  return true;
-}
-
-void PositionGlobalYaw::InternalSwap(PositionGlobalYaw* other) {
-  using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(PositionGlobalYaw, altitude_type_)
-      + sizeof(PositionGlobalYaw::altitude_type_)
-      - PROTOBUF_FIELD_OFFSET(PositionGlobalYaw, lat_deg_)>(
-          reinterpret_cast<char*>(&lat_deg_),
-          reinterpret_cast<char*>(&other->lat_deg_));
-}
-
-::PROTOBUF_NAMESPACE_ID::Metadata PositionGlobalYaw::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
-      &descriptor_table_swarm_5fserver_2fswarm_5fserver_2eproto_getter, &descriptor_table_swarm_5fserver_2fswarm_5fserver_2eproto_once,
-      file_level_metadata_swarm_5fserver_2fswarm_5fserver_2eproto[2]);
-}
-
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace swarm_server
 }  // namespace rpc
@@ -733,10 +359,6 @@ Arena::CreateMaybeMessage< ::mavsdk::rpc::swarm_server::SubscribePositionTargetG
 template<> PROTOBUF_NOINLINE ::mavsdk::rpc::swarm_server::SubscribePositionTargetGlobalResponse*
 Arena::CreateMaybeMessage< ::mavsdk::rpc::swarm_server::SubscribePositionTargetGlobalResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::mavsdk::rpc::swarm_server::SubscribePositionTargetGlobalResponse >(arena);
-}
-template<> PROTOBUF_NOINLINE ::mavsdk::rpc::swarm_server::PositionGlobalYaw*
-Arena::CreateMaybeMessage< ::mavsdk::rpc::swarm_server::PositionGlobalYaw >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::mavsdk::rpc::swarm_server::PositionGlobalYaw >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

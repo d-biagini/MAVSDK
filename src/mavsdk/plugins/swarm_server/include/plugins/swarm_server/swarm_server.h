@@ -13,22 +13,18 @@
 #include <utility>
 #include <vector>
 
-
 #include "mavsdk/server_plugin_base.h"
 
-
 namespace mavsdk {
-
 
 class ServerComponent;
 class SwarmServerImpl;
 
 /**
- * @brief 
+ * @brief
  */
 class SwarmServer : public ServerPluginBase {
 public:
-
     /**
      * @brief Constructor. Creates the plugin for a ServerComponent instance.
      *
@@ -42,79 +38,21 @@ public:
      */
     explicit SwarmServer(std::shared_ptr<ServerComponent> server_component);
 
-
     /**
      * @brief Destructor (internal use only).
      */
     ~SwarmServer() override;
 
-
-
-
-
-
     /**
-     * @brief Type for position commands in Global (Latitude, Longitude, Altitude) coordinates and yaw.
+     * @brief Callback type for subscribe_position_target_global_setpoint.
      */
-    struct PositionGlobalYaw {
-        
-        /**
-     * @brief Possible altitude options
-     */
-    enum class AltitudeType {
-        RelHome, /**< @brief Altitude relative to the Home position. */
-        Amsl, /**< @brief Altitude above mean sea level (AMSL). */
-        Agl, /**< @brief Altitude above ground level (AGL). */
-    };
 
-    /**
-     * @brief Stream operator to print information about a `SwarmServer::AltitudeType`.
-     *
-     * @return A reference to the stream.
-     */
-    friend std::ostream& operator<<(std::ostream& str, SwarmServer::PositionGlobalYaw::AltitudeType const& altitude_type);
-        
-        double lat_deg{}; /**< @brief Latitude (in degrees) */
-        double lon_deg{}; /**< @brief Longitude (in degrees) */
-        float alt_m{}; /**< @brief altitude (in metres) */
-        float yaw_deg{}; /**< @brief Yaw in degrees (0 North, positive is clock-wise looking from above) */
-        AltitudeType altitude_type{}; /**< @brief altitude type for this position */
-    };
-
-    /**
-     * @brief Equal operator to compare two `SwarmServer::PositionGlobalYaw` objects.
-     *
-     * @return `true` if items are equal.
-     */
-    friend bool operator==(const SwarmServer::PositionGlobalYaw& lhs, const SwarmServer::PositionGlobalYaw& rhs);
-
-    /**
-     * @brief Stream operator to print information about a `SwarmServer::PositionGlobalYaw`.
-     *
-     * @return A reference to the stream.
-     */
-    friend std::ostream& operator<<(std::ostream& str, SwarmServer::PositionGlobalYaw const& position_global_yaw);
-
-
-
-
-
-        
-    /**
-    * @brief Callback type for subscribe_position_target_global_setpoint.
-    */
-        
     using PositionTargetGlobalSetpointCallback = std::function<void(PositionGlobalYaw)>;
 
     /**
-     * @brief 
+     * @brief
      */
     void subscribe_position_target_global_setpoint(PositionTargetGlobalSetpointCallback callback);
-
-
-
-
-
 
     /**
      * @brief Copy constructor.

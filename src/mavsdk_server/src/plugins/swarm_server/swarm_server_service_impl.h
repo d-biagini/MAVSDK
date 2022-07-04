@@ -21,114 +21,22 @@
 namespace mavsdk {
 namespace mavsdk_server {
 
-
-template<typename SwarmServer = SwarmServer, typename LazyServerPlugin = LazyServerPlugin<SwarmServer>>
+template<
+    typename SwarmServer = SwarmServer,
+    typename LazyServerPlugin = LazyServerPlugin<SwarmServer>>
 
 class SwarmServerServiceImpl final : public rpc::swarm_server::SwarmServerService::Service {
 public:
-
     SwarmServerServiceImpl(LazyServerPlugin& lazy_plugin) : _lazy_plugin(lazy_plugin) {}
 
-
-
-
-
-    static rpc::swarm_server::PositionGlobalYaw::AltitudeType translateToRpcAltitudeType(const mavsdk::SwarmServer::PositionGlobalYaw::AltitudeType& altitude_type)
-    {
-        switch (altitude_type) {
-            default:
-                LogErr() << "Unknown altitude_type enum value: " << static_cast<int>(altitude_type);
-            // FALLTHROUGH
-            case mavsdk::SwarmServer::PositionGlobalYaw::AltitudeType::RelHome:
-                return rpc::swarm_server::PositionGlobalYaw_AltitudeType_ALTITUDE_TYPE_REL_HOME;
-            case mavsdk::SwarmServer::PositionGlobalYaw::AltitudeType::Amsl:
-                return rpc::swarm_server::PositionGlobalYaw_AltitudeType_ALTITUDE_TYPE_AMSL;
-            case mavsdk::SwarmServer::PositionGlobalYaw::AltitudeType::Agl:
-                return rpc::swarm_server::PositionGlobalYaw_AltitudeType_ALTITUDE_TYPE_AGL;
-        }
-    }
-
-    static mavsdk::SwarmServer::PositionGlobalYaw::AltitudeType translateFromRpcAltitudeType(const rpc::swarm_server::PositionGlobalYaw::AltitudeType altitude_type)
-    {
-        switch (altitude_type) {
-            default:
-                LogErr() << "Unknown altitude_type enum value: " << static_cast<int>(altitude_type);
-            // FALLTHROUGH
-            case rpc::swarm_server::PositionGlobalYaw_AltitudeType_ALTITUDE_TYPE_REL_HOME:
-                return mavsdk::SwarmServer::PositionGlobalYaw::AltitudeType::RelHome;
-            case rpc::swarm_server::PositionGlobalYaw_AltitudeType_ALTITUDE_TYPE_AMSL:
-                return mavsdk::SwarmServer::PositionGlobalYaw::AltitudeType::Amsl;
-            case rpc::swarm_server::PositionGlobalYaw_AltitudeType_ALTITUDE_TYPE_AGL:
-                return mavsdk::SwarmServer::PositionGlobalYaw::AltitudeType::Agl;
-        }
-    }
-
-
-    static std::unique_ptr<rpc::swarm_server::PositionGlobalYaw> translateToRpcPositionGlobalYaw(const mavsdk::SwarmServer::PositionGlobalYaw &position_global_yaw)
-    {
-        auto rpc_obj = std::make_unique<rpc::swarm_server::PositionGlobalYaw>();
-
-
-            
-        rpc_obj->set_lat_deg(position_global_yaw.lat_deg);
-            
-        
-            
-        rpc_obj->set_lon_deg(position_global_yaw.lon_deg);
-            
-        
-            
-        rpc_obj->set_alt_m(position_global_yaw.alt_m);
-            
-        
-            
-        rpc_obj->set_yaw_deg(position_global_yaw.yaw_deg);
-            
-        
-            
-                
-        rpc_obj->set_altitude_type(translateToRpcAltitudeType(position_global_yaw.altitude_type));
-                
-            
-        
-
-        return rpc_obj;
-    }
-
-    static mavsdk::SwarmServer::PositionGlobalYaw translateFromRpcPositionGlobalYaw(const rpc::swarm_server::PositionGlobalYaw& position_global_yaw)
-    {
-        mavsdk::SwarmServer::PositionGlobalYaw obj;
-
-
-            
-        obj.lat_deg = position_global_yaw.lat_deg();
-            
-        
-            
-        obj.lon_deg = position_global_yaw.lon_deg();
-            
-        
-            
-        obj.alt_m = position_global_yaw.alt_m();
-            
-        
-            
-        obj.yaw_deg = position_global_yaw.yaw_deg();
-            
-        
-            
-        obj.altitude_type = translateFromRpcAltitudeType(position_global_yaw.altitude_type());
-            
-        
-        return obj;
-    }
-
-
-
-    grpc::Status SubscribePositionTargetGlobalSetpoint(grpc::ServerContext* /* context */, const mavsdk::rpc::swarm_server::SubscribePositionTargetGlobalSetpointRequest* /* request */, grpc::ServerWriter<rpc::swarm_server::PositionTargetGlobalSetpointResponse>* writer) override
+    grpc::Status SubscribePositionTargetGlobalSetpoint(
+        grpc::ServerContext* /* context */,
+        const mavsdk::rpc::swarm_server::
+            SubscribePositionTargetGlobalSetpointRequest* /* request */,
+        grpc::ServerWriter<rpc::swarm_server::PositionTargetGlobalSetpointResponse>* writer)
+        override
     {
         if (_lazy_plugin.maybe_plugin() == nullptr) {
-            
             return grpc::Status::OK;
         }
 
@@ -140,25 +48,22 @@ public:
         auto subscribe_mutex = std::make_shared<std::mutex>();
 
         _lazy_plugin.maybe_plugin()->subscribe_position_target_global_setpoint(
-            [this, &writer, &stream_closed_promise, is_finished, subscribe_mutex](const mavsdk::SwarmServer::PositionGlobalYaw position_target_global_setpoint) {
+            [this, &writer, &stream_closed_promise, is_finished, subscribe_mutex](
+                const mavsdk::SwarmServer::PositionGlobalYaw position_target_global_setpoint) {
+                rpc::swarm_server::PositionTargetGlobalSetpointResponse rpc_response;
 
-            rpc::swarm_server::PositionTargetGlobalSetpointResponse rpc_response;
-        
-            rpc_response.set_allocated_position_global_yaw(translateToRpcPositionGlobalYaw(position_target_global_setpoint).release());
-        
+                rpc_response.set_allocated_position_global_yaw(
+                    translateToRpcPositionGlobalYaw(position_target_global_setpoint).release());
 
-        
+                std::unique_lock<std::mutex> lock(*subscribe_mutex);
+                if (!*is_finished && !writer->Write(rpc_response)) {
+                    _lazy_plugin.maybe_plugin()->subscribe_position_target_global_setpoint(nullptr);
 
-            std::unique_lock<std::mutex> lock(*subscribe_mutex);
-            if (!*is_finished && !writer->Write(rpc_response)) {
-                
-                _lazy_plugin.maybe_plugin()->subscribe_position_target_global_setpoint(nullptr);
-                
-                *is_finished = true;
-                unregister_stream_stop_promise(stream_closed_promise);
-                stream_closed_promise->set_value();
-            }
-        });
+                    *is_finished = true;
+                    unregister_stream_stop_promise(stream_closed_promise);
+                    stream_closed_promise->set_value();
+                }
+            });
 
         stream_closed_future.wait();
         std::unique_lock<std::mutex> lock(*subscribe_mutex);
@@ -167,8 +72,8 @@ public:
         return grpc::Status::OK;
     }
 
-
-    void stop() {
+    void stop()
+    {
         _stopped.store(true);
         for (auto& prom : _stream_stop_promises) {
             if (auto handle = prom.lock()) {
@@ -178,7 +83,8 @@ public:
     }
 
 private:
-    void register_stream_stop_promise(std::weak_ptr<std::promise<void>> prom) {
+    void register_stream_stop_promise(std::weak_ptr<std::promise<void>> prom)
+    {
         // If we have already stopped, set promise immediately and don't add it to list.
         if (_stopped.load()) {
             if (auto handle = prom.lock()) {
@@ -189,8 +95,10 @@ private:
         }
     }
 
-    void unregister_stream_stop_promise(std::shared_ptr<std::promise<void>> prom) {
-        for (auto it = _stream_stop_promises.begin(); it != _stream_stop_promises.end(); /* ++it */) {
+    void unregister_stream_stop_promise(std::shared_ptr<std::promise<void>> prom)
+    {
+        for (auto it = _stream_stop_promises.begin(); it != _stream_stop_promises.end();
+             /* ++it */) {
             if (it->lock() == prom) {
                 it = _stream_stop_promises.erase(it);
             } else {
@@ -199,11 +107,10 @@ private:
         }
     }
 
-
     LazyServerPlugin& _lazy_plugin;
 
     std::atomic<bool> _stopped{false};
-    std::vector<std::weak_ptr<std::promise<void>>> _stream_stop_promises {};
+    std::vector<std::weak_ptr<std::promise<void>>> _stream_stop_promises{};
 };
 
 } // namespace mavsdk_server

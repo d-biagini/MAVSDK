@@ -2,21 +2,19 @@
 
 namespace mavsdk {
 
-
-SwarmServerImpl::SwarmServerImpl(std::shared_ptr<ServerComponent> server_component) : ServerPluginImplBase(server_component)
+SwarmServerImpl::SwarmServerImpl(std::shared_ptr<ServerComponent> server_component) :
+    ServerPluginImplBase(server_component)
 {
     _server_component_impl->register_plugin(this);
 }
 
-
 SwarmServerImpl::~SwarmServerImpl()
 {
-
     _server_component_impl->unregister_plugin(this);
-
 }
 
-void SwarmServerImpl::init() {
+void SwarmServerImpl::init()
+{
     _server_component_impl->register_mavlink_message_handler(
         MAVLINK_MSG_ID_SET_POSITION_TARGET_GLOBAL_INT,
         [this](const mavlink_message_t& message) { process_position_target_global_int(message); },
@@ -26,11 +24,13 @@ void SwarmServerImpl::init() {
 void SwarmServerImpl::deinit() {}
 
 void SwarmServerImpl::subscribe_position_target_global_setpoint(
-    SwarmServer::PositionTargetGlobalSetpointCallback callback) {
+    SwarmServer::PositionTargetGlobalSetpointCallback callback)
+{
     _position_target_callback = callback;
 }
 
-void SwarmServerImpl::process_position_target_global_int(const mavlink_message_t& message) {
+void SwarmServerImpl::process_position_target_global_int(const mavlink_message_t& message)
+{
     mavlink_set_position_target_global_int_t global_position_message;
     mavlink_msg_set_position_target_global_int_decode(&message, &global_position_message);
 
@@ -50,6 +50,5 @@ void SwarmServerImpl::process_position_target_global_int(const mavlink_message_t
         _position_target_callback(position);
     }
 }
-
 
 } // namespace mavsdk

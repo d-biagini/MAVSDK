@@ -4,9 +4,7 @@
 
 #include "server_plugin_impl_base.h"
 
-
 namespace mavsdk {
-
 
 class SwarmServerImpl : public ServerPluginImplBase {
 public:
@@ -17,7 +15,8 @@ public:
     void init() override;
     void deinit() override;
 
-    void subscribe_position_target_global_setpoint(SwarmServer::PositionTargetGlobalSetpointCallback callback);
+    void subscribe_position_target_global_setpoint(
+        SwarmServer::PositionTargetGlobalSetpointCallback callback);
     void process_position_target_global_int(const mavlink_message_t& message);
 
 private:
