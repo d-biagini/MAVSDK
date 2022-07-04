@@ -2,7 +2,6 @@
 
 namespace mavsdk {
 
-
 SwarmControllerImpl::SwarmControllerImpl(System& system) : PluginImplBase(system)
 {
     _parent->register_plugin(this);
@@ -11,17 +10,15 @@ SwarmControllerImpl::SwarmControllerImpl(System& system) : PluginImplBase(system
     cur_position = nullptr;
 }
 
-SwarmControllerImpl::SwarmControllerImpl(std::shared_ptr<System> system) : PluginImplBase(std::move(system))
+SwarmControllerImpl::SwarmControllerImpl(std::shared_ptr<System> system) :
+    PluginImplBase(std::move(system))
 {
     _parent->register_plugin(this);
 }
 
-
 SwarmControllerImpl::~SwarmControllerImpl()
 {
-
     _parent->unregister_plugin(this);
-
 }
 
 void SwarmControllerImpl::init() {}
@@ -34,7 +31,7 @@ void SwarmControllerImpl::disable() {}
 
 bool SwarmControllerImpl::start()
 {
-    if(cur_position) {
+    if (cur_position) {
         is_started = true;
         return true;
     }
@@ -55,12 +52,13 @@ bool SwarmControllerImpl::is_active()
     return is_started;
 }
 
-bool SwarmControllerImpl::set_position_global(PositionGlobalYaw position_global_yaw)
+void SwarmControllerImpl::set_rate(float frequency) {}
+
+bool SwarmControllerImpl::set_position_global(
+    SwarmController::PositionGlobalYaw position_global_yaw)
 {
-    cur_position = std::make_unique<PositionGlobalYaw>(position_global_yaw);
+    cur_position = std::make_unique<SwarmController::PositionGlobalYaw>(position_global_yaw);
     return true;
 }
-
-
 
 } // namespace mavsdk

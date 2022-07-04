@@ -29,6 +29,74 @@ class SwarmServerServiceImpl final : public rpc::swarm_server::SwarmServerServic
 public:
     SwarmServerServiceImpl(LazyServerPlugin& lazy_plugin) : _lazy_plugin(lazy_plugin) {}
 
+    static rpc::swarm_server::PositionGlobalYaw::AltitudeType translateToRpcAltitudeType(
+        const mavsdk::SwarmServer::PositionGlobalYaw::AltitudeType& altitude_type)
+    {
+        switch (altitude_type) {
+            default:
+                LogErr() << "Unknown altitude_type enum value: " << static_cast<int>(altitude_type);
+            // FALLTHROUGH
+            case mavsdk::SwarmServer::PositionGlobalYaw::AltitudeType::RelHome:
+                return rpc::swarm_server::PositionGlobalYaw_AltitudeType_ALTITUDE_TYPE_REL_HOME;
+            case mavsdk::SwarmServer::PositionGlobalYaw::AltitudeType::Amsl:
+                return rpc::swarm_server::PositionGlobalYaw_AltitudeType_ALTITUDE_TYPE_AMSL;
+            case mavsdk::SwarmServer::PositionGlobalYaw::AltitudeType::Agl:
+                return rpc::swarm_server::PositionGlobalYaw_AltitudeType_ALTITUDE_TYPE_AGL;
+        }
+    }
+
+    static mavsdk::SwarmServer::PositionGlobalYaw::AltitudeType translateFromRpcAltitudeType(
+        const rpc::swarm_server::PositionGlobalYaw::AltitudeType altitude_type)
+    {
+        switch (altitude_type) {
+            default:
+                LogErr() << "Unknown altitude_type enum value: " << static_cast<int>(altitude_type);
+            // FALLTHROUGH
+            case rpc::swarm_server::PositionGlobalYaw_AltitudeType_ALTITUDE_TYPE_REL_HOME:
+                return mavsdk::SwarmServer::PositionGlobalYaw::AltitudeType::RelHome;
+            case rpc::swarm_server::PositionGlobalYaw_AltitudeType_ALTITUDE_TYPE_AMSL:
+                return mavsdk::SwarmServer::PositionGlobalYaw::AltitudeType::Amsl;
+            case rpc::swarm_server::PositionGlobalYaw_AltitudeType_ALTITUDE_TYPE_AGL:
+                return mavsdk::SwarmServer::PositionGlobalYaw::AltitudeType::Agl;
+        }
+    }
+
+    static std::unique_ptr<rpc::swarm_server::PositionGlobalYaw> translateToRpcPositionGlobalYaw(
+        const mavsdk::SwarmServer::PositionGlobalYaw& position_global_yaw)
+    {
+        auto rpc_obj = std::make_unique<rpc::swarm_server::PositionGlobalYaw>();
+
+        rpc_obj->set_lat_deg(position_global_yaw.lat_deg);
+
+        rpc_obj->set_lon_deg(position_global_yaw.lon_deg);
+
+        rpc_obj->set_alt_m(position_global_yaw.alt_m);
+
+        rpc_obj->set_yaw_deg(position_global_yaw.yaw_deg);
+
+        rpc_obj->set_altitude_type(translateToRpcAltitudeType(position_global_yaw.altitude_type));
+
+        return rpc_obj;
+    }
+
+    static mavsdk::SwarmServer::PositionGlobalYaw translateFromRpcPositionGlobalYaw(
+        const rpc::swarm_server::PositionGlobalYaw& position_global_yaw)
+    {
+        mavsdk::SwarmServer::PositionGlobalYaw obj;
+
+        obj.lat_deg = position_global_yaw.lat_deg();
+
+        obj.lon_deg = position_global_yaw.lon_deg();
+
+        obj.alt_m = position_global_yaw.alt_m();
+
+        obj.yaw_deg = position_global_yaw.yaw_deg();
+
+        obj.altitude_type = translateFromRpcAltitudeType(position_global_yaw.altitude_type());
+
+        return obj;
+    }
+
     grpc::Status SubscribePositionTargetGlobalSetpoint(
         grpc::ServerContext* /* context */,
         const mavsdk::rpc::swarm_server::

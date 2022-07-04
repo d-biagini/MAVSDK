@@ -4,9 +4,7 @@
 
 #include "plugin_impl_base.h"
 
-
 namespace mavsdk {
-
 
 class SwarmControllerImpl : public PluginImplBase {
 public:
@@ -18,15 +16,21 @@ public:
     void init() override;
     void deinit() override;
 
+    void enable() override;
+    void disable() override;
+
     bool start();
+
     bool stop();
 
     bool is_active();
 
-    bool set_position_global(PositionGlobalYaw position_global_yaw);
+    void set_rate(float frequency);
+
+    bool set_position_global(SwarmController::PositionGlobalYaw position_global_yaw);
 
 private:
-    std::unique_ptr<PositionGlobalYaw> cur_position;
+    std::unique_ptr<SwarmController::PositionGlobalYaw> cur_position;
 
     bool is_started;
 };
