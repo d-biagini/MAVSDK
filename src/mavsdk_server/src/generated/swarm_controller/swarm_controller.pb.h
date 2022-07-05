@@ -71,6 +71,12 @@ extern SetRateRequestDefaultTypeInternal _SetRateRequest_default_instance_;
 class SetRateResponse;
 struct SetRateResponseDefaultTypeInternal;
 extern SetRateResponseDefaultTypeInternal _SetRateResponse_default_instance_;
+class SetTargetComponentIdRequest;
+struct SetTargetComponentIdRequestDefaultTypeInternal;
+extern SetTargetComponentIdRequestDefaultTypeInternal _SetTargetComponentIdRequest_default_instance_;
+class SetTargetComponentIdResponse;
+struct SetTargetComponentIdResponseDefaultTypeInternal;
+extern SetTargetComponentIdResponseDefaultTypeInternal _SetTargetComponentIdResponse_default_instance_;
 class StartRequest;
 struct StartRequestDefaultTypeInternal;
 extern StartRequestDefaultTypeInternal _StartRequest_default_instance_;
@@ -94,6 +100,8 @@ template<> ::mavsdk::rpc::swarm_controller::SetPositionGlobalRequest* Arena::Cre
 template<> ::mavsdk::rpc::swarm_controller::SetPositionGlobalResponse* Arena::CreateMaybeMessage<::mavsdk::rpc::swarm_controller::SetPositionGlobalResponse>(Arena*);
 template<> ::mavsdk::rpc::swarm_controller::SetRateRequest* Arena::CreateMaybeMessage<::mavsdk::rpc::swarm_controller::SetRateRequest>(Arena*);
 template<> ::mavsdk::rpc::swarm_controller::SetRateResponse* Arena::CreateMaybeMessage<::mavsdk::rpc::swarm_controller::SetRateResponse>(Arena*);
+template<> ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest* Arena::CreateMaybeMessage<::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest>(Arena*);
+template<> ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse* Arena::CreateMaybeMessage<::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse>(Arena*);
 template<> ::mavsdk::rpc::swarm_controller::StartRequest* Arena::CreateMaybeMessage<::mavsdk::rpc::swarm_controller::StartRequest>(Arena*);
 template<> ::mavsdk::rpc::swarm_controller::StartResponse* Arena::CreateMaybeMessage<::mavsdk::rpc::swarm_controller::StartResponse>(Arena*);
 template<> ::mavsdk::rpc::swarm_controller::StopRequest* Arena::CreateMaybeMessage<::mavsdk::rpc::swarm_controller::StopRequest>(Arena*);
@@ -1462,6 +1470,265 @@ class SetRateResponse final :
 };
 // -------------------------------------------------------------------
 
+class SetTargetComponentIdRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:mavsdk.rpc.swarm_controller.SetTargetComponentIdRequest) */ {
+ public:
+  inline SetTargetComponentIdRequest() : SetTargetComponentIdRequest(nullptr) {}
+  ~SetTargetComponentIdRequest() override;
+  explicit PROTOBUF_CONSTEXPR SetTargetComponentIdRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  SetTargetComponentIdRequest(const SetTargetComponentIdRequest& from);
+  SetTargetComponentIdRequest(SetTargetComponentIdRequest&& from) noexcept
+    : SetTargetComponentIdRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline SetTargetComponentIdRequest& operator=(const SetTargetComponentIdRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SetTargetComponentIdRequest& operator=(SetTargetComponentIdRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SetTargetComponentIdRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SetTargetComponentIdRequest* internal_default_instance() {
+    return reinterpret_cast<const SetTargetComponentIdRequest*>(
+               &_SetTargetComponentIdRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    10;
+
+  friend void swap(SetTargetComponentIdRequest& a, SetTargetComponentIdRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(SetTargetComponentIdRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SetTargetComponentIdRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SetTargetComponentIdRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<SetTargetComponentIdRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const SetTargetComponentIdRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const SetTargetComponentIdRequest& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(SetTargetComponentIdRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "mavsdk.rpc.swarm_controller.SetTargetComponentIdRequest";
+  }
+  protected:
+  explicit SetTargetComponentIdRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kTargetComponentIdFieldNumber = 1,
+  };
+  // int32 target_component_id = 1;
+  void clear_target_component_id();
+  int32_t target_component_id() const;
+  void set_target_component_id(int32_t value);
+  private:
+  int32_t _internal_target_component_id() const;
+  void _internal_set_target_component_id(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.swarm_controller.SetTargetComponentIdRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  int32_t target_component_id_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_swarm_5fcontroller_2fswarm_5fcontroller_2eproto;
+};
+// -------------------------------------------------------------------
+
+class SetTargetComponentIdResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:mavsdk.rpc.swarm_controller.SetTargetComponentIdResponse) */ {
+ public:
+  inline SetTargetComponentIdResponse() : SetTargetComponentIdResponse(nullptr) {}
+  explicit PROTOBUF_CONSTEXPR SetTargetComponentIdResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  SetTargetComponentIdResponse(const SetTargetComponentIdResponse& from);
+  SetTargetComponentIdResponse(SetTargetComponentIdResponse&& from) noexcept
+    : SetTargetComponentIdResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline SetTargetComponentIdResponse& operator=(const SetTargetComponentIdResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SetTargetComponentIdResponse& operator=(SetTargetComponentIdResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SetTargetComponentIdResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SetTargetComponentIdResponse* internal_default_instance() {
+    return reinterpret_cast<const SetTargetComponentIdResponse*>(
+               &_SetTargetComponentIdResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    11;
+
+  friend void swap(SetTargetComponentIdResponse& a, SetTargetComponentIdResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(SetTargetComponentIdResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SetTargetComponentIdResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SetTargetComponentIdResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<SetTargetComponentIdResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const SetTargetComponentIdResponse& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(this, from);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const SetTargetComponentIdResponse& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(this, from);
+  }
+  public:
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "mavsdk.rpc.swarm_controller.SetTargetComponentIdResponse";
+  }
+  protected:
+  explicit SetTargetComponentIdResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.swarm_controller.SetTargetComponentIdResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  friend struct ::TableStruct_swarm_5fcontroller_2fswarm_5fcontroller_2eproto;
+};
+// -------------------------------------------------------------------
+
 class PositionGlobalYaw final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:mavsdk.rpc.swarm_controller.PositionGlobalYaw) */ {
  public:
@@ -1510,7 +1777,7 @@ class PositionGlobalYaw final :
                &_PositionGlobalYaw_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    10;
+    12;
 
   friend void swap(PositionGlobalYaw& a, PositionGlobalYaw& b) {
     a.Swap(&b);
@@ -1918,6 +2185,34 @@ inline void SetRateRequest::set_frequency(float value) {
 
 // -------------------------------------------------------------------
 
+// SetTargetComponentIdRequest
+
+// int32 target_component_id = 1;
+inline void SetTargetComponentIdRequest::clear_target_component_id() {
+  target_component_id_ = 0;
+}
+inline int32_t SetTargetComponentIdRequest::_internal_target_component_id() const {
+  return target_component_id_;
+}
+inline int32_t SetTargetComponentIdRequest::target_component_id() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.swarm_controller.SetTargetComponentIdRequest.target_component_id)
+  return _internal_target_component_id();
+}
+inline void SetTargetComponentIdRequest::_internal_set_target_component_id(int32_t value) {
+  
+  target_component_id_ = value;
+}
+inline void SetTargetComponentIdRequest::set_target_component_id(int32_t value) {
+  _internal_set_target_component_id(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.swarm_controller.SetTargetComponentIdRequest.target_component_id)
+}
+
+// -------------------------------------------------------------------
+
+// SetTargetComponentIdResponse
+
+// -------------------------------------------------------------------
+
 // PositionGlobalYaw
 
 // double lat_deg = 1;
@@ -2023,6 +2318,10 @@ inline void PositionGlobalYaw::set_altitude_type(::mavsdk::rpc::swarm_controller
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

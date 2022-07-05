@@ -75,6 +75,13 @@ class SwarmControllerService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::swarm_controller::SetRateResponse>> PrepareAsyncSetRate(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::SetRateRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::swarm_controller::SetRateResponse>>(PrepareAsyncSetRateRaw(context, request, cq));
     }
+    virtual ::grpc::Status SetTargetComponentId(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest& request, ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse>> AsyncSetTargetComponentId(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse>>(AsyncSetTargetComponentIdRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse>> PrepareAsyncSetTargetComponentId(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse>>(PrepareAsyncSetTargetComponentIdRaw(context, request, cq));
+    }
     //
     // Set the position in Global coordinates (latitude, longitude, altitude) and yaw
     virtual ::grpc::Status SetPositionGlobal(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::SetPositionGlobalRequest& request, ::mavsdk::rpc::swarm_controller::SetPositionGlobalResponse* response) = 0;
@@ -105,6 +112,8 @@ class SwarmControllerService final {
       virtual void IsActive(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::IsActiveRequest* request, ::mavsdk::rpc::swarm_controller::IsActiveResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void SetRate(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::SetRateRequest* request, ::mavsdk::rpc::swarm_controller::SetRateResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void SetRate(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::SetRateRequest* request, ::mavsdk::rpc::swarm_controller::SetRateResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void SetTargetComponentId(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest* request, ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void SetTargetComponentId(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest* request, ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       //
       // Set the position in Global coordinates (latitude, longitude, altitude) and yaw
       virtual void SetPositionGlobal(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::SetPositionGlobalRequest* request, ::mavsdk::rpc::swarm_controller::SetPositionGlobalResponse* response, std::function<void(::grpc::Status)>) = 0;
@@ -122,6 +131,8 @@ class SwarmControllerService final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::swarm_controller::IsActiveResponse>* PrepareAsyncIsActiveRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::IsActiveRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::swarm_controller::SetRateResponse>* AsyncSetRateRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::SetRateRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::swarm_controller::SetRateResponse>* PrepareAsyncSetRateRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::SetRateRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse>* AsyncSetTargetComponentIdRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse>* PrepareAsyncSetTargetComponentIdRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::swarm_controller::SetPositionGlobalResponse>* AsyncSetPositionGlobalRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::SetPositionGlobalRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::swarm_controller::SetPositionGlobalResponse>* PrepareAsyncSetPositionGlobalRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::SetPositionGlobalRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
@@ -156,6 +167,13 @@ class SwarmControllerService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::swarm_controller::SetRateResponse>> PrepareAsyncSetRate(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::SetRateRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::swarm_controller::SetRateResponse>>(PrepareAsyncSetRateRaw(context, request, cq));
     }
+    ::grpc::Status SetTargetComponentId(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest& request, ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse>> AsyncSetTargetComponentId(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse>>(AsyncSetTargetComponentIdRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse>> PrepareAsyncSetTargetComponentId(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse>>(PrepareAsyncSetTargetComponentIdRaw(context, request, cq));
+    }
     ::grpc::Status SetPositionGlobal(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::SetPositionGlobalRequest& request, ::mavsdk::rpc::swarm_controller::SetPositionGlobalResponse* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::swarm_controller::SetPositionGlobalResponse>> AsyncSetPositionGlobal(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::SetPositionGlobalRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::swarm_controller::SetPositionGlobalResponse>>(AsyncSetPositionGlobalRaw(context, request, cq));
@@ -174,6 +192,8 @@ class SwarmControllerService final {
       void IsActive(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::IsActiveRequest* request, ::mavsdk::rpc::swarm_controller::IsActiveResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void SetRate(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::SetRateRequest* request, ::mavsdk::rpc::swarm_controller::SetRateResponse* response, std::function<void(::grpc::Status)>) override;
       void SetRate(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::SetRateRequest* request, ::mavsdk::rpc::swarm_controller::SetRateResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void SetTargetComponentId(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest* request, ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse* response, std::function<void(::grpc::Status)>) override;
+      void SetTargetComponentId(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest* request, ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void SetPositionGlobal(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::SetPositionGlobalRequest* request, ::mavsdk::rpc::swarm_controller::SetPositionGlobalResponse* response, std::function<void(::grpc::Status)>) override;
       void SetPositionGlobal(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::SetPositionGlobalRequest* request, ::mavsdk::rpc::swarm_controller::SetPositionGlobalResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
      private:
@@ -195,12 +215,15 @@ class SwarmControllerService final {
     ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::swarm_controller::IsActiveResponse>* PrepareAsyncIsActiveRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::IsActiveRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::swarm_controller::SetRateResponse>* AsyncSetRateRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::SetRateRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::swarm_controller::SetRateResponse>* PrepareAsyncSetRateRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::SetRateRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse>* AsyncSetTargetComponentIdRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse>* PrepareAsyncSetTargetComponentIdRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::swarm_controller::SetPositionGlobalResponse>* AsyncSetPositionGlobalRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::SetPositionGlobalRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::swarm_controller::SetPositionGlobalResponse>* PrepareAsyncSetPositionGlobalRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::SetPositionGlobalRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_Start_;
     const ::grpc::internal::RpcMethod rpcmethod_Stop_;
     const ::grpc::internal::RpcMethod rpcmethod_IsActive_;
     const ::grpc::internal::RpcMethod rpcmethod_SetRate_;
+    const ::grpc::internal::RpcMethod rpcmethod_SetTargetComponentId_;
     const ::grpc::internal::RpcMethod rpcmethod_SetPositionGlobal_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
@@ -223,6 +246,7 @@ class SwarmControllerService final {
     // setpoints.
     virtual ::grpc::Status IsActive(::grpc::ServerContext* context, const ::mavsdk::rpc::swarm_controller::IsActiveRequest* request, ::mavsdk::rpc::swarm_controller::IsActiveResponse* response);
     virtual ::grpc::Status SetRate(::grpc::ServerContext* context, const ::mavsdk::rpc::swarm_controller::SetRateRequest* request, ::mavsdk::rpc::swarm_controller::SetRateResponse* response);
+    virtual ::grpc::Status SetTargetComponentId(::grpc::ServerContext* context, const ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest* request, ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse* response);
     //
     // Set the position in Global coordinates (latitude, longitude, altitude) and yaw
     virtual ::grpc::Status SetPositionGlobal(::grpc::ServerContext* context, const ::mavsdk::rpc::swarm_controller::SetPositionGlobalRequest* request, ::mavsdk::rpc::swarm_controller::SetPositionGlobalResponse* response);
@@ -308,12 +332,32 @@ class SwarmControllerService final {
     }
   };
   template <class BaseClass>
+  class WithAsyncMethod_SetTargetComponentId : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_SetTargetComponentId() {
+      ::grpc::Service::MarkMethodAsync(4);
+    }
+    ~WithAsyncMethod_SetTargetComponentId() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetTargetComponentId(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest* /*request*/, ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSetTargetComponentId(::grpc::ServerContext* context, ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest* request, ::grpc::ServerAsyncResponseWriter< ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithAsyncMethod_SetPositionGlobal : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetPositionGlobal() {
-      ::grpc::Service::MarkMethodAsync(4);
+      ::grpc::Service::MarkMethodAsync(5);
     }
     ~WithAsyncMethod_SetPositionGlobal() override {
       BaseClassMustBeDerivedFromService(this);
@@ -324,10 +368,10 @@ class SwarmControllerService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetPositionGlobal(::grpc::ServerContext* context, ::mavsdk::rpc::swarm_controller::SetPositionGlobalRequest* request, ::grpc::ServerAsyncResponseWriter< ::mavsdk::rpc::swarm_controller::SetPositionGlobalResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_Start<WithAsyncMethod_Stop<WithAsyncMethod_IsActive<WithAsyncMethod_SetRate<WithAsyncMethod_SetPositionGlobal<Service > > > > > AsyncService;
+  typedef WithAsyncMethod_Start<WithAsyncMethod_Stop<WithAsyncMethod_IsActive<WithAsyncMethod_SetRate<WithAsyncMethod_SetTargetComponentId<WithAsyncMethod_SetPositionGlobal<Service > > > > > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_Start : public BaseClass {
    private:
@@ -437,18 +481,45 @@ class SwarmControllerService final {
       ::grpc::CallbackServerContext* /*context*/, const ::mavsdk::rpc::swarm_controller::SetRateRequest* /*request*/, ::mavsdk::rpc::swarm_controller::SetRateResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
+  class WithCallbackMethod_SetTargetComponentId : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_SetTargetComponentId() {
+      ::grpc::Service::MarkMethodCallback(4,
+          new ::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest, ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest* request, ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse* response) { return this->SetTargetComponentId(context, request, response); }));}
+    void SetMessageAllocatorFor_SetTargetComponentId(
+        ::grpc::MessageAllocator< ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest, ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(4);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest, ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_SetTargetComponentId() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetTargetComponentId(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest* /*request*/, ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* SetTargetComponentId(
+      ::grpc::CallbackServerContext* /*context*/, const ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest* /*request*/, ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
   class WithCallbackMethod_SetPositionGlobal : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_SetPositionGlobal() {
-      ::grpc::Service::MarkMethodCallback(4,
+      ::grpc::Service::MarkMethodCallback(5,
           new ::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::swarm_controller::SetPositionGlobalRequest, ::mavsdk::rpc::swarm_controller::SetPositionGlobalResponse>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::mavsdk::rpc::swarm_controller::SetPositionGlobalRequest* request, ::mavsdk::rpc::swarm_controller::SetPositionGlobalResponse* response) { return this->SetPositionGlobal(context, request, response); }));}
     void SetMessageAllocatorFor_SetPositionGlobal(
         ::grpc::MessageAllocator< ::mavsdk::rpc::swarm_controller::SetPositionGlobalRequest, ::mavsdk::rpc::swarm_controller::SetPositionGlobalResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(4);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(5);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::swarm_controller::SetPositionGlobalRequest, ::mavsdk::rpc::swarm_controller::SetPositionGlobalResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -463,7 +534,7 @@ class SwarmControllerService final {
     virtual ::grpc::ServerUnaryReactor* SetPositionGlobal(
       ::grpc::CallbackServerContext* /*context*/, const ::mavsdk::rpc::swarm_controller::SetPositionGlobalRequest* /*request*/, ::mavsdk::rpc::swarm_controller::SetPositionGlobalResponse* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_Start<WithCallbackMethod_Stop<WithCallbackMethod_IsActive<WithCallbackMethod_SetRate<WithCallbackMethod_SetPositionGlobal<Service > > > > > CallbackService;
+  typedef WithCallbackMethod_Start<WithCallbackMethod_Stop<WithCallbackMethod_IsActive<WithCallbackMethod_SetRate<WithCallbackMethod_SetTargetComponentId<WithCallbackMethod_SetPositionGlobal<Service > > > > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_Start : public BaseClass {
@@ -534,12 +605,29 @@ class SwarmControllerService final {
     }
   };
   template <class BaseClass>
+  class WithGenericMethod_SetTargetComponentId : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_SetTargetComponentId() {
+      ::grpc::Service::MarkMethodGeneric(4);
+    }
+    ~WithGenericMethod_SetTargetComponentId() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetTargetComponentId(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest* /*request*/, ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
   class WithGenericMethod_SetPositionGlobal : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetPositionGlobal() {
-      ::grpc::Service::MarkMethodGeneric(4);
+      ::grpc::Service::MarkMethodGeneric(5);
     }
     ~WithGenericMethod_SetPositionGlobal() override {
       BaseClassMustBeDerivedFromService(this);
@@ -631,12 +719,32 @@ class SwarmControllerService final {
     }
   };
   template <class BaseClass>
+  class WithRawMethod_SetTargetComponentId : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_SetTargetComponentId() {
+      ::grpc::Service::MarkMethodRaw(4);
+    }
+    ~WithRawMethod_SetTargetComponentId() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetTargetComponentId(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest* /*request*/, ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSetTargetComponentId(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithRawMethod_SetPositionGlobal : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetPositionGlobal() {
-      ::grpc::Service::MarkMethodRaw(4);
+      ::grpc::Service::MarkMethodRaw(5);
     }
     ~WithRawMethod_SetPositionGlobal() override {
       BaseClassMustBeDerivedFromService(this);
@@ -647,7 +755,7 @@ class SwarmControllerService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetPositionGlobal(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -739,12 +847,34 @@ class SwarmControllerService final {
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
+  class WithRawCallbackMethod_SetTargetComponentId : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_SetTargetComponentId() {
+      ::grpc::Service::MarkMethodRawCallback(4,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SetTargetComponentId(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_SetTargetComponentId() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetTargetComponentId(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest* /*request*/, ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* SetTargetComponentId(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
   class WithRawCallbackMethod_SetPositionGlobal : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_SetPositionGlobal() {
-      ::grpc::Service::MarkMethodRawCallback(4,
+      ::grpc::Service::MarkMethodRawCallback(5,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SetPositionGlobal(context, request, response); }));
@@ -869,12 +999,39 @@ class SwarmControllerService final {
     virtual ::grpc::Status StreamedSetRate(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::mavsdk::rpc::swarm_controller::SetRateRequest,::mavsdk::rpc::swarm_controller::SetRateResponse>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
+  class WithStreamedUnaryMethod_SetTargetComponentId : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_SetTargetComponentId() {
+      ::grpc::Service::MarkMethodStreamed(4,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest, ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest, ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse>* streamer) {
+                       return this->StreamedSetTargetComponentId(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_SetTargetComponentId() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status SetTargetComponentId(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest* /*request*/, ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedSetTargetComponentId(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest,::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
   class WithStreamedUnaryMethod_SetPositionGlobal : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetPositionGlobal() {
-      ::grpc::Service::MarkMethodStreamed(4,
+      ::grpc::Service::MarkMethodStreamed(5,
         new ::grpc::internal::StreamedUnaryHandler<
           ::mavsdk::rpc::swarm_controller::SetPositionGlobalRequest, ::mavsdk::rpc::swarm_controller::SetPositionGlobalResponse>(
             [this](::grpc::ServerContext* context,
@@ -895,9 +1052,9 @@ class SwarmControllerService final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedSetPositionGlobal(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::mavsdk::rpc::swarm_controller::SetPositionGlobalRequest,::mavsdk::rpc::swarm_controller::SetPositionGlobalResponse>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_Start<WithStreamedUnaryMethod_Stop<WithStreamedUnaryMethod_IsActive<WithStreamedUnaryMethod_SetRate<WithStreamedUnaryMethod_SetPositionGlobal<Service > > > > > StreamedUnaryService;
+  typedef WithStreamedUnaryMethod_Start<WithStreamedUnaryMethod_Stop<WithStreamedUnaryMethod_IsActive<WithStreamedUnaryMethod_SetRate<WithStreamedUnaryMethod_SetTargetComponentId<WithStreamedUnaryMethod_SetPositionGlobal<Service > > > > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_Start<WithStreamedUnaryMethod_Stop<WithStreamedUnaryMethod_IsActive<WithStreamedUnaryMethod_SetRate<WithStreamedUnaryMethod_SetPositionGlobal<Service > > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_Start<WithStreamedUnaryMethod_Stop<WithStreamedUnaryMethod_IsActive<WithStreamedUnaryMethod_SetRate<WithStreamedUnaryMethod_SetTargetComponentId<WithStreamedUnaryMethod_SetPositionGlobal<Service > > > > > > StreamedService;
 };
 
 }  // namespace swarm_controller

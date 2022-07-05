@@ -28,6 +28,7 @@ static const char* SwarmControllerService_method_names[] = {
   "/mavsdk.rpc.swarm_controller.SwarmControllerService/Stop",
   "/mavsdk.rpc.swarm_controller.SwarmControllerService/IsActive",
   "/mavsdk.rpc.swarm_controller.SwarmControllerService/SetRate",
+  "/mavsdk.rpc.swarm_controller.SwarmControllerService/SetTargetComponentId",
   "/mavsdk.rpc.swarm_controller.SwarmControllerService/SetPositionGlobal",
 };
 
@@ -42,7 +43,8 @@ SwarmControllerService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterfa
   , rpcmethod_Stop_(SwarmControllerService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_IsActive_(SwarmControllerService_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_SetRate_(SwarmControllerService_method_names[3], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetPositionGlobal_(SwarmControllerService_method_names[4], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetTargetComponentId_(SwarmControllerService_method_names[4], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetPositionGlobal_(SwarmControllerService_method_names[5], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status SwarmControllerService::Stub::Start(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::StartRequest& request, ::mavsdk::rpc::swarm_controller::StartResponse* response) {
@@ -137,6 +139,29 @@ void SwarmControllerService::Stub::async::SetRate(::grpc::ClientContext* context
   return result;
 }
 
+::grpc::Status SwarmControllerService::Stub::SetTargetComponentId(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest& request, ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest, ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_SetTargetComponentId_, context, request, response);
+}
+
+void SwarmControllerService::Stub::async::SetTargetComponentId(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest* request, ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest, ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SetTargetComponentId_, context, request, response, std::move(f));
+}
+
+void SwarmControllerService::Stub::async::SetTargetComponentId(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest* request, ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SetTargetComponentId_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse>* SwarmControllerService::Stub::PrepareAsyncSetTargetComponentIdRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse, ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_SetTargetComponentId_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse>* SwarmControllerService::Stub::AsyncSetTargetComponentIdRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncSetTargetComponentIdRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
 ::grpc::Status SwarmControllerService::Stub::SetPositionGlobal(::grpc::ClientContext* context, const ::mavsdk::rpc::swarm_controller::SetPositionGlobalRequest& request, ::mavsdk::rpc::swarm_controller::SetPositionGlobalResponse* response) {
   return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::swarm_controller::SetPositionGlobalRequest, ::mavsdk::rpc::swarm_controller::SetPositionGlobalResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_SetPositionGlobal_, context, request, response);
 }
@@ -204,6 +229,16 @@ SwarmControllerService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       SwarmControllerService_method_names[4],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< SwarmControllerService::Service, ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest, ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](SwarmControllerService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest* req,
+             ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse* resp) {
+               return service->SetTargetComponentId(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      SwarmControllerService_method_names[5],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< SwarmControllerService::Service, ::mavsdk::rpc::swarm_controller::SetPositionGlobalRequest, ::mavsdk::rpc::swarm_controller::SetPositionGlobalResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](SwarmControllerService::Service* service,
              ::grpc::ServerContext* ctx,
@@ -238,6 +273,13 @@ SwarmControllerService::Service::~Service() {
 }
 
 ::grpc::Status SwarmControllerService::Service::SetRate(::grpc::ServerContext* context, const ::mavsdk::rpc::swarm_controller::SetRateRequest* request, ::mavsdk::rpc::swarm_controller::SetRateResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status SwarmControllerService::Service::SetTargetComponentId(::grpc::ServerContext* context, const ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest* request, ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse* response) {
   (void) context;
   (void) request;
   (void) response;

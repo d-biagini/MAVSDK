@@ -44,6 +44,11 @@ void SwarmController::set_rate(float frequency) const
     _impl->set_rate(frequency);
 }
 
+void SwarmController::set_target_component_id(int32_t target_component_id) const
+{
+    _impl->set_target_component_id(target_component_id);
+}
+
 bool SwarmController::set_position_global(PositionGlobalYaw position_global_yaw) const
 {
     return _impl->set_position_global(position_global_yaw);

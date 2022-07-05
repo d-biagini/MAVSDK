@@ -144,6 +144,15 @@ public:
     void set_rate(float frequency) const;
 
     /**
+     * @brief
+     *
+     * This function is blocking.
+     *
+     * @return Result of request.
+     */
+    void set_target_component_id(int32_t target_component_id) const;
+
+    /**
      * @brief Set the position in Global coordinates (latitude, longitude, altitude) and yaw
      *
      * This function is blocking.

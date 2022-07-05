@@ -173,6 +173,25 @@ public:
         return grpc::Status::OK;
     }
 
+    grpc::Status SetTargetComponentId(
+        grpc::ServerContext* /* context */,
+        const rpc::swarm_controller::SetTargetComponentIdRequest* request,
+        rpc::swarm_controller::SetTargetComponentIdResponse* /* response */) override
+    {
+        if (_lazy_plugin.maybe_plugin() == nullptr) {
+            return grpc::Status::OK;
+        }
+
+        if (request == nullptr) {
+            LogWarn() << "SetTargetComponentId sent with a null request! Ignoring...";
+            return grpc::Status::OK;
+        }
+
+        _lazy_plugin.maybe_plugin()->set_target_component_id(request->target_component_id());
+
+        return grpc::Status::OK;
+    }
+
     grpc::Status SetPositionGlobal(
         grpc::ServerContext* /* context */,
         const rpc::swarm_controller::SetPositionGlobalRequest* request,

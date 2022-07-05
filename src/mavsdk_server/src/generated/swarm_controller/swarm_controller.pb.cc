@@ -139,6 +139,29 @@ struct SetRateResponseDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SetRateResponseDefaultTypeInternal _SetRateResponse_default_instance_;
+PROTOBUF_CONSTEXPR SetTargetComponentIdRequest::SetTargetComponentIdRequest(
+    ::_pbi::ConstantInitialized)
+  : target_component_id_(0){}
+struct SetTargetComponentIdRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SetTargetComponentIdRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SetTargetComponentIdRequestDefaultTypeInternal() {}
+  union {
+    SetTargetComponentIdRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SetTargetComponentIdRequestDefaultTypeInternal _SetTargetComponentIdRequest_default_instance_;
+PROTOBUF_CONSTEXPR SetTargetComponentIdResponse::SetTargetComponentIdResponse(
+    ::_pbi::ConstantInitialized){}
+struct SetTargetComponentIdResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SetTargetComponentIdResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SetTargetComponentIdResponseDefaultTypeInternal() {}
+  union {
+    SetTargetComponentIdResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SetTargetComponentIdResponseDefaultTypeInternal _SetTargetComponentIdResponse_default_instance_;
 PROTOBUF_CONSTEXPR PositionGlobalYaw::PositionGlobalYaw(
     ::_pbi::ConstantInitialized)
   : lat_deg_(0)
@@ -159,7 +182,7 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORIT
 }  // namespace swarm_controller
 }  // namespace rpc
 }  // namespace mavsdk
-static ::_pb::Metadata file_level_metadata_swarm_5fcontroller_2fswarm_5fcontroller_2eproto[11];
+static ::_pb::Metadata file_level_metadata_swarm_5fcontroller_2fswarm_5fcontroller_2eproto[13];
 static const ::_pb::EnumDescriptor* file_level_enum_descriptors_swarm_5fcontroller_2fswarm_5fcontroller_2eproto[1];
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_swarm_5fcontroller_2fswarm_5fcontroller_2eproto = nullptr;
 
@@ -231,6 +254,19 @@ const uint32_t TableStruct_swarm_5fcontroller_2fswarm_5fcontroller_2eproto::offs
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest, target_component_id_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::swarm_controller::PositionGlobalYaw, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -253,7 +289,9 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 46, -1, -1, sizeof(::mavsdk::rpc::swarm_controller::SetPositionGlobalResponse)},
   { 53, -1, -1, sizeof(::mavsdk::rpc::swarm_controller::SetRateRequest)},
   { 60, -1, -1, sizeof(::mavsdk::rpc::swarm_controller::SetRateResponse)},
-  { 66, -1, -1, sizeof(::mavsdk::rpc::swarm_controller::PositionGlobalYaw)},
+  { 66, -1, -1, sizeof(::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest)},
+  { 73, -1, -1, sizeof(::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse)},
+  { 79, -1, -1, sizeof(::mavsdk::rpc::swarm_controller::PositionGlobalYaw)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -267,6 +305,8 @@ static const ::_pb::Message* const file_default_instances[] = {
   &::mavsdk::rpc::swarm_controller::_SetPositionGlobalResponse_default_instance_._instance,
   &::mavsdk::rpc::swarm_controller::_SetRateRequest_default_instance_._instance,
   &::mavsdk::rpc::swarm_controller::_SetRateResponse_default_instance_._instance,
+  &::mavsdk::rpc::swarm_controller::_SetTargetComponentIdRequest_default_instance_._instance,
+  &::mavsdk::rpc::swarm_controller::_SetTargetComponentIdResponse_default_instance_._instance,
   &::mavsdk::rpc::swarm_controller::_PositionGlobalYaw_default_instance_._instance,
 };
 
@@ -283,24 +323,30 @@ const char descriptor_table_protodef_swarm_5fcontroller_2fswarm_5fcontroller_2ep
   "GlobalYaw\"4\n\031SetPositionGlobalResponse\022\027"
   "\n\017offboard_result\030\001 \001(\010\"#\n\016SetRateReques"
   "t\022\021\n\tfrequency\030\001 \001(\002\"\021\n\017SetRateResponse\""
-  "\204\002\n\021PositionGlobalYaw\022\017\n\007lat_deg\030\001 \001(\001\022\017"
-  "\n\007lon_deg\030\002 \001(\001\022\r\n\005alt_m\030\003 \001(\002\022\017\n\007yaw_de"
-  "g\030\004 \001(\002\022R\n\raltitude_type\030\005 \001(\0162;.mavsdk."
-  "rpc.swarm_controller.PositionGlobalYaw.A"
-  "ltitudeType\"Y\n\014AltitudeType\022\032\n\026ALTITUDE_"
-  "TYPE_REL_HOME\020\000\022\026\n\022ALTITUDE_TYPE_AMSL\020\001\022"
-  "\025\n\021ALTITUDE_TYPE_AGL\020\0022\307\004\n\026SwarmControll"
-  "erService\022d\n\005Start\022).mavsdk.rpc.swarm_co"
-  "ntroller.StartRequest\032*.mavsdk.rpc.swarm"
-  "_controller.StartResponse\"\004\200\265\030\001\022a\n\004Stop\022"
-  "(.mavsdk.rpc.swarm_controller.StopReques"
-  "t\032).mavsdk.rpc.swarm_controller.StopResp"
-  "onse\"\004\200\265\030\001\022m\n\010IsActive\022,.mavsdk.rpc.swar"
-  "m_controller.IsActiveRequest\032-.mavsdk.rp"
-  "c.swarm_controller.IsActiveResponse\"\004\200\265\030"
-  "\001\022j\n\007SetRate\022+.mavsdk.rpc.swarm_controll"
-  "er.SetRateRequest\032,.mavsdk.rpc.swarm_con"
-  "troller.SetRateResponse\"\004\200\265\030\001\022\210\001\n\021SetPos"
+  ":\n\033SetTargetComponentIdRequest\022\033\n\023target"
+  "_component_id\030\001 \001(\005\"\036\n\034SetTargetComponen"
+  "tIdResponse\"\204\002\n\021PositionGlobalYaw\022\017\n\007lat"
+  "_deg\030\001 \001(\001\022\017\n\007lon_deg\030\002 \001(\001\022\r\n\005alt_m\030\003 \001"
+  "(\002\022\017\n\007yaw_deg\030\004 \001(\002\022R\n\raltitude_type\030\005 \001"
+  "(\0162;.mavsdk.rpc.swarm_controller.Positio"
+  "nGlobalYaw.AltitudeType\"Y\n\014AltitudeType\022"
+  "\032\n\026ALTITUDE_TYPE_REL_HOME\020\000\022\026\n\022ALTITUDE_"
+  "TYPE_AMSL\020\001\022\025\n\021ALTITUDE_TYPE_AGL\020\0022\333\005\n\026S"
+  "warmControllerService\022d\n\005Start\022).mavsdk."
+  "rpc.swarm_controller.StartRequest\032*.mavs"
+  "dk.rpc.swarm_controller.StartResponse\"\004\200"
+  "\265\030\001\022a\n\004Stop\022(.mavsdk.rpc.swarm_controlle"
+  "r.StopRequest\032).mavsdk.rpc.swarm_control"
+  "ler.StopResponse\"\004\200\265\030\001\022m\n\010IsActive\022,.mav"
+  "sdk.rpc.swarm_controller.IsActiveRequest"
+  "\032-.mavsdk.rpc.swarm_controller.IsActiveR"
+  "esponse\"\004\200\265\030\001\022j\n\007SetRate\022+.mavsdk.rpc.sw"
+  "arm_controller.SetRateRequest\032,.mavsdk.r"
+  "pc.swarm_controller.SetRateResponse\"\004\200\265\030"
+  "\001\022\221\001\n\024SetTargetComponentId\0228.mavsdk.rpc."
+  "swarm_controller.SetTargetComponentIdReq"
+  "uest\0329.mavsdk.rpc.swarm_controller.SetTa"
+  "rgetComponentIdResponse\"\004\200\265\030\001\022\210\001\n\021SetPos"
   "itionGlobal\0225.mavsdk.rpc.swarm_controlle"
   "r.SetPositionGlobalRequest\0326.mavsdk.rpc."
   "swarm_controller.SetPositionGlobalRespon"
@@ -312,9 +358,9 @@ static const ::_pbi::DescriptorTable* const descriptor_table_swarm_5fcontroller_
 };
 static ::_pbi::once_flag descriptor_table_swarm_5fcontroller_2fswarm_5fcontroller_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_swarm_5fcontroller_2fswarm_5fcontroller_2eproto = {
-    false, false, 1366, descriptor_table_protodef_swarm_5fcontroller_2fswarm_5fcontroller_2eproto,
+    false, false, 1606, descriptor_table_protodef_swarm_5fcontroller_2fswarm_5fcontroller_2eproto,
     "swarm_controller/swarm_controller.proto",
-    &descriptor_table_swarm_5fcontroller_2fswarm_5fcontroller_2eproto_once, descriptor_table_swarm_5fcontroller_2fswarm_5fcontroller_2eproto_deps, 1, 11,
+    &descriptor_table_swarm_5fcontroller_2fswarm_5fcontroller_2eproto_once, descriptor_table_swarm_5fcontroller_2fswarm_5fcontroller_2eproto_deps, 1, 13,
     schemas, file_default_instances, TableStruct_swarm_5fcontroller_2fswarm_5fcontroller_2eproto::offsets,
     file_level_metadata_swarm_5fcontroller_2fswarm_5fcontroller_2eproto, file_level_enum_descriptors_swarm_5fcontroller_2fswarm_5fcontroller_2eproto,
     file_level_service_descriptors_swarm_5fcontroller_2fswarm_5fcontroller_2eproto,
@@ -1564,6 +1610,216 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SetRateResponse::GetClassData(
 
 // ===================================================================
 
+class SetTargetComponentIdRequest::_Internal {
+ public:
+};
+
+SetTargetComponentIdRequest::SetTargetComponentIdRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.swarm_controller.SetTargetComponentIdRequest)
+}
+SetTargetComponentIdRequest::SetTargetComponentIdRequest(const SetTargetComponentIdRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  target_component_id_ = from.target_component_id_;
+  // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.swarm_controller.SetTargetComponentIdRequest)
+}
+
+inline void SetTargetComponentIdRequest::SharedCtor() {
+target_component_id_ = 0;
+}
+
+SetTargetComponentIdRequest::~SetTargetComponentIdRequest() {
+  // @@protoc_insertion_point(destructor:mavsdk.rpc.swarm_controller.SetTargetComponentIdRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void SetTargetComponentIdRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void SetTargetComponentIdRequest::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void SetTargetComponentIdRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:mavsdk.rpc.swarm_controller.SetTargetComponentIdRequest)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  target_component_id_ = 0;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* SetTargetComponentIdRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // int32 target_component_id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          target_component_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* SetTargetComponentIdRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:mavsdk.rpc.swarm_controller.SetTargetComponentIdRequest)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 target_component_id = 1;
+  if (this->_internal_target_component_id() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(1, this->_internal_target_component_id(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:mavsdk.rpc.swarm_controller.SetTargetComponentIdRequest)
+  return target;
+}
+
+size_t SetTargetComponentIdRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:mavsdk.rpc.swarm_controller.SetTargetComponentIdRequest)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // int32 target_component_id = 1;
+  if (this->_internal_target_component_id() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_target_component_id());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData SetTargetComponentIdRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    SetTargetComponentIdRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SetTargetComponentIdRequest::GetClassData() const { return &_class_data_; }
+
+void SetTargetComponentIdRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<SetTargetComponentIdRequest *>(to)->MergeFrom(
+      static_cast<const SetTargetComponentIdRequest &>(from));
+}
+
+
+void SetTargetComponentIdRequest::MergeFrom(const SetTargetComponentIdRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.swarm_controller.SetTargetComponentIdRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_target_component_id() != 0) {
+    _internal_set_target_component_id(from._internal_target_component_id());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void SetTargetComponentIdRequest::CopyFrom(const SetTargetComponentIdRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:mavsdk.rpc.swarm_controller.SetTargetComponentIdRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool SetTargetComponentIdRequest::IsInitialized() const {
+  return true;
+}
+
+void SetTargetComponentIdRequest::InternalSwap(SetTargetComponentIdRequest* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(target_component_id_, other->target_component_id_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata SetTargetComponentIdRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_swarm_5fcontroller_2fswarm_5fcontroller_2eproto_getter, &descriptor_table_swarm_5fcontroller_2fswarm_5fcontroller_2eproto_once,
+      file_level_metadata_swarm_5fcontroller_2fswarm_5fcontroller_2eproto[10]);
+}
+
+// ===================================================================
+
+class SetTargetComponentIdResponse::_Internal {
+ public:
+};
+
+SetTargetComponentIdResponse::SetTargetComponentIdResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase(arena, is_message_owned) {
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.swarm_controller.SetTargetComponentIdResponse)
+}
+SetTargetComponentIdResponse::SetTargetComponentIdResponse(const SetTargetComponentIdResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.swarm_controller.SetTargetComponentIdResponse)
+}
+
+
+
+
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData SetTargetComponentIdResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl,
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl,
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SetTargetComponentIdResponse::GetClassData() const { return &_class_data_; }
+
+
+
+
+
+
+
+::PROTOBUF_NAMESPACE_ID::Metadata SetTargetComponentIdResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_swarm_5fcontroller_2fswarm_5fcontroller_2eproto_getter, &descriptor_table_swarm_5fcontroller_2fswarm_5fcontroller_2eproto_once,
+      file_level_metadata_swarm_5fcontroller_2fswarm_5fcontroller_2eproto[11]);
+}
+
+// ===================================================================
+
 class PositionGlobalYaw::_Internal {
  public:
 };
@@ -1881,7 +2137,7 @@ void PositionGlobalYaw::InternalSwap(PositionGlobalYaw* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata PositionGlobalYaw::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_swarm_5fcontroller_2fswarm_5fcontroller_2eproto_getter, &descriptor_table_swarm_5fcontroller_2fswarm_5fcontroller_2eproto_once,
-      file_level_metadata_swarm_5fcontroller_2fswarm_5fcontroller_2eproto[10]);
+      file_level_metadata_swarm_5fcontroller_2fswarm_5fcontroller_2eproto[12]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -1928,6 +2184,14 @@ Arena::CreateMaybeMessage< ::mavsdk::rpc::swarm_controller::SetRateRequest >(Are
 template<> PROTOBUF_NOINLINE ::mavsdk::rpc::swarm_controller::SetRateResponse*
 Arena::CreateMaybeMessage< ::mavsdk::rpc::swarm_controller::SetRateResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::mavsdk::rpc::swarm_controller::SetRateResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest*
+Arena::CreateMaybeMessage< ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::mavsdk::rpc::swarm_controller::SetTargetComponentIdRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse*
+Arena::CreateMaybeMessage< ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::mavsdk::rpc::swarm_controller::SetTargetComponentIdResponse >(arena);
 }
 template<> PROTOBUF_NOINLINE ::mavsdk::rpc::swarm_controller::PositionGlobalYaw*
 Arena::CreateMaybeMessage< ::mavsdk::rpc::swarm_controller::PositionGlobalYaw >(Arena* arena) {
