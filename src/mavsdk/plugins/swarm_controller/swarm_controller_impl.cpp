@@ -24,7 +24,14 @@ SwarmControllerImpl::~SwarmControllerImpl()
 
 void SwarmControllerImpl::init() {}
 
-void SwarmControllerImpl::deinit() {}
+void SwarmControllerImpl::deinit() {
+    if(_call_every_cookie != nullptr) {
+        _parent->remove_call_every(_call_every_cookie);
+        
+        _call_every_cookie = nullptr;
+        cur_position = nullptr;
+    }
+}
 
 void SwarmControllerImpl::enable() {}
 

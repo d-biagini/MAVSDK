@@ -69,7 +69,7 @@ int main(int argc, char** argv)
     }
     
     auto system = get_system(mavsdk);
-
+    
     if(!system) {
         return -1;
     }
@@ -88,7 +88,7 @@ int main(int argc, char** argv)
     position.yaw_deg = 250.0f;
 
     swarm_controller.set_position_global(position);
-    
+
     if(!swarm_controller.start()) {
         std::cerr << "Unable to start swarm controller (system id:" << system->get_system_id() << ")";
     }
